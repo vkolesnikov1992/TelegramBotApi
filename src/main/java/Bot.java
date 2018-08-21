@@ -10,6 +10,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,14 +45,31 @@ public class Bot extends TelegramLongPollingBot {
         Message message = update.getMessage();
         if(message !=null && message.hasText()){
             switch (message.getText()) {
-                /*
-                case "/help":
-                    sendMsg(message, "Чем могу помочь?");
+
+                case "/start":
+                    sendMsg(message, "Добро пожаловать! Чтобы узнать погоду введите ваш город");
+
+                case "Благовещенск":
+                    try {
+                        sendMsg(message, Weather.getWeather(message.getText(), model));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
-                case "/setting":
-                    sendMsg(message, "Что будем настраивать?");
+                case "Февральск":
+                    try {
+                        sendMsg(message, Weather.getWeather(message.getText(), model));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
-                    */
+                case "Свободный":
+                    try {
+                        sendMsg(message, Weather.getWeather(message.getText(), model));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 default:
                     try{
                         sendMsg(message, Weather.getWeather(message.getText(), model));
