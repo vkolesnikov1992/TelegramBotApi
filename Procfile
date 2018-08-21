@@ -1,0 +1,1 @@
+WeatherBot: sh target/bin/workerBot
