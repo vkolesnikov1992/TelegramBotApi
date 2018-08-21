@@ -44,12 +44,14 @@ public class Bot extends TelegramLongPollingBot {
         Message message = update.getMessage();
         if(message !=null && message.hasText()){
             switch (message.getText()) {
+                /*
                 case "/help":
                     sendMsg(message, "Чем могу помочь?");
                     break;
                 case "/setting":
                     sendMsg(message, "Что будем настраивать?");
                     break;
+                    */
                 default:
                     try{
                         sendMsg(message, Weather.getWeather(message.getText(), model));
@@ -72,8 +74,9 @@ public class Bot extends TelegramLongPollingBot {
         List<KeyboardRow> keyboardRows = new ArrayList<>();
         KeyboardRow keyboardFirstRow = new KeyboardRow();
 
-        keyboardFirstRow.add(new KeyboardButton("/help"));
-        keyboardFirstRow.add(new KeyboardButton("/settings"));
+        keyboardFirstRow.add(new KeyboardButton("Благовещенск"));
+        keyboardFirstRow.add(new KeyboardButton("Февральск"));
+        keyboardFirstRow.add(new KeyboardButton("Свободный"));
 
         keyboardRows.add(keyboardFirstRow);
         replyKeyboardMarkup.setKeyboard(keyboardRows);

@@ -34,7 +34,7 @@ public class Weather {
         return "Город: " + model.getName() +"\n" +
                 "Температура: " + model.getTemp() + "C" + "\n" +
                 "Влажность: " + model.getHumidity() + "%" + "\n" +
-                "Описание: " + model.getMain() + "\n" +
+                "Погода: " + model.getMain() + "\n" +
                 "http://openweathermap.org/img/w/" + model.getIcon() + ".png";
     }
 }
