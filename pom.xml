@@ -16,7 +16,7 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>com.home.server.TelegramBot</mainClass>
+                            <mainClass>com.home.server.TelegramBotApi</mainClass>
                             <name>WeatherBot</name>
                         </program>
                     </programs>
