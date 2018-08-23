@@ -17,7 +17,7 @@
                     <programs>
                         <program>
                             <mainClass>com.home.server.Bot</mainClass>
-                            <name>WeatherBot</name>
+                            <name>Bot</name>
                         </program>
                     </programs>
                 </configuration>
