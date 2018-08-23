@@ -48,6 +48,7 @@ public class Bot extends TelegramLongPollingBot {
 
                 case "/start":
                     sendMsg(message, "Добро пожаловать! Чтобы узнать погоду введите ваш город");
+                    break;
 
 
                 default:
