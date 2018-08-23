@@ -18,24 +18,24 @@ public class Bot extends TelegramLongPollingBot {
     public static void main(String[] args) {
         ApiContextInitializer.init();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
-        try{
+        try {
             telegramBotsApi.registerBot(new Bot());
-        } catch (TelegramApiRequestException ex){
+        } catch (TelegramApiRequestException ex) {
             ex.printStackTrace();
         }
     }
 
-    public void sendMsg(Message message, String text){
+    public void sendMsg(Message message, String text) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
         sendMessage.setChatId(message.getChatId().toString());
         sendMessage.setReplyToMessageId(message.getMessageId());
         sendMessage.setText(text);
-        try{
+        try {
             setButtons(sendMessage);
             sendMessage(sendMessage);
 
-        }catch (TelegramApiException ex){
+        } catch (TelegramApiException ex) {
             ex.printStackTrace();
         }
     }
@@ -43,7 +43,7 @@ public class Bot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         Model model = new Model();
         Message message = update.getMessage();
-        if(message !=null && message.hasText()){
+        if (message != null && message.hasText()) {
             switch (message.getText()) {
 
                 case "/start":
@@ -71,10 +71,9 @@ public class Bot extends TelegramLongPollingBot {
                     }
 
                 default:
-                    try{
+                    try {
                         sendMsg(message, Weather.getWeather(message.getText(), model));
-                    }
-                    catch (Exception ex){
+                    } catch (Exception ex) {
                         sendMsg(message, "Город не найден");
                     }
 
@@ -82,7 +81,7 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
-    public void setButtons(SendMessage sendMessage){
+    public void setButtons(SendMessage sendMessage) {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
         replyKeyboardMarkup.setSelective(true);
@@ -105,6 +104,6 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     public String getBotToken() {
-         return "679967918:AAHbrwG9Ckr0ABcLrOX2jSfg-r_h_6OfCuQ";
+        return "679967918:AAHbrwG9Ckr0ABcLrOX2jSfg-r_h_6OfCuQ";
     }
 }
