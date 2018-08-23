@@ -49,26 +49,6 @@ public class Bot extends TelegramLongPollingBot {
                 case "/start":
                     sendMsg(message, "Добро пожаловать! Чтобы узнать погоду введите ваш город");
 
-                case "Благовещенск":
-                    try {
-                        sendMsg(message, Weather.getWeather(message.getText(), model));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case "Февральск":
-                    try {
-                        sendMsg(message, Weather.getWeather(message.getText(), model));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case "Свободный":
-                    try {
-                        sendMsg(message, Weather.getWeather(message.getText(), model));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
 
                 default:
                     try {
