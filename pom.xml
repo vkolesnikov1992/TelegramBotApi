@@ -16,8 +16,8 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>com.home.server.Bot</mainClass>
-                            <name>Bot</name>
+                            <mainClass>com.home.server.WeatherBo</mainClass>
+                            <name>WeatherBot</name>
                         </program>
                     </programs>
                 </configuration>
