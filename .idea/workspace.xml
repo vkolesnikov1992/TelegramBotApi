@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6bad5158-6222-4c60-ae9b-1edf08edfcc1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bot.java" afterPath="$PROJECT_DIR$/src/main/java/Bot.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherFiveDay.java" afterPath="$PROJECT_DIR$/src/main/java/WeatherFiveDay.java" />
       <change beforePath="$PROJECT_DIR$/target/classes/Bot.class" afterPath="$PROJECT_DIR$/target/classes/Bot.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/Model.class" afterPath="$PROJECT_DIR$/target/classes/Model.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/Weather.class" afterPath="$PROJECT_DIR$/target/classes/Weather.class" />
@@ -553,7 +551,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535086286732</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="test">
+      <created>1535096879483</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1535096879483</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
