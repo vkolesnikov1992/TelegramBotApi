@@ -76,7 +76,7 @@ public class Bot extends TelegramLongPollingBot {
         keyboardFirstRow.add(new KeyboardButton("Благовещенск"));
         keyboardFirstRow.add(new KeyboardButton("Февральск"));
         keyboardTwoRow.add(new KeyboardButton("Свободный"));
-        keyboardTwoRow.add(new KeyboardButton("Новокиевский Увал"));
+        keyboardTwoRow.add(new KeyboardButton("Мазаново"));
 
         keyboardRows.add(keyboardFirstRow);
         keyboardRows.add(keyboardTwoRow);
