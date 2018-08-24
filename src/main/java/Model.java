@@ -5,6 +5,24 @@ public class Model {
     private Double humidity;
     private String icon;
     private String main;
+    private Double speed;
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Double speed) {
+        this.speed = speed;
+    }
 
     public String getName() {
         return name;

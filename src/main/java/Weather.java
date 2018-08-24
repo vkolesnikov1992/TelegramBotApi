@@ -24,6 +24,9 @@ public class Weather {
         model.setTemp(main.getDouble("temp"));
         model.setHumidity(main.getDouble("humidity"));
 
+        JSONObject wind = object.getJSONObject("wind");
+        model.setSpeed(wind.getDouble("speed"));
+
         JSONArray getArray = object.getJSONArray("weather");
         for(int i = 0; i < getArray.length(); i++){
             JSONObject obj = getArray.getJSONObject(i);
