@@ -25,6 +25,8 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
+
+
     public void sendMsg(Message message, String text) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
@@ -40,6 +42,22 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
+    public void sendMsg2(Message message, String text){
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.enableMarkdown(true);
+        sendMessage.setChatId(message.getChatId().toString());
+        sendMessage.setReplyToMessageId(message.getMessageId());
+        sendMessage.setText(text);
+        try {
+            setButtons2(sendMessage);
+            sendMessage(sendMessage);
+
+        } catch (TelegramApiException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
     public void onUpdateReceived(Update update) {
         Model model = new Model();
         Message message = update.getMessage();
@@ -47,9 +65,17 @@ public class Bot extends TelegramLongPollingBot {
             switch (message.getText()) {
 
                 case "/start":
-                    sendMsg(message, "Добро пожаловать! Чтобы узнать погоду введите ваш город");
+                    sendMsg2(message, "Добро пожаловать! Выберите подходящий вариант:");
                     break;
 
+                case "Текущая погода":
+                    sendMsg(message, "Введите или выберите город:");
+                    break;
+
+
+                case "Погода на 5 дней":
+                    sendMsg(message, "Ввведите или выбирите город:");
+                    break;
 
                 default:
                     try {
@@ -67,7 +93,7 @@ public class Bot extends TelegramLongPollingBot {
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
         replyKeyboardMarkup.setSelective(true);
         replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setOneTimeKeyboard(false);
+        replyKeyboardMarkup.setOneTimeKeyboard(true);
 
         List<KeyboardRow> keyboardRows = new ArrayList<>();
         KeyboardRow keyboardFirstRow = new KeyboardRow();
@@ -77,6 +103,25 @@ public class Bot extends TelegramLongPollingBot {
         keyboardFirstRow.add(new KeyboardButton("Февральск"));
         keyboardTwoRow.add(new KeyboardButton("Свободный"));
         keyboardTwoRow.add(new KeyboardButton("Мазаново"));
+
+        keyboardRows.add(keyboardFirstRow);
+        keyboardRows.add(keyboardTwoRow);
+        replyKeyboardMarkup.setKeyboard(keyboardRows);
+    }
+
+    public void setButtons2(SendMessage sendMessage){
+        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+        sendMessage.setReplyMarkup(replyKeyboardMarkup);
+        replyKeyboardMarkup.setSelective(true);
+        replyKeyboardMarkup.setResizeKeyboard(true);
+        replyKeyboardMarkup.setOneTimeKeyboard(true);
+
+        List<KeyboardRow> keyboardRows = new ArrayList<>();
+        KeyboardRow keyboardFirstRow = new KeyboardRow();
+        KeyboardRow keyboardTwoRow = new KeyboardRow();
+
+        keyboardFirstRow.add(new KeyboardButton("Текущая погода"));
+        keyboardTwoRow.add(new KeyboardButton("Погода на 5 дней"));
 
         keyboardRows.add(keyboardFirstRow);
         keyboardRows.add(keyboardTwoRow);
