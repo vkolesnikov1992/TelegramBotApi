@@ -72,7 +72,7 @@ public class Bot extends TelegramLongPollingBot {
                     sendMsg(message, "Введите или выберите город:");
                     break;
 
-                case "test":
+                case "Москва":
                     try {
                         sendMsg(message, WeatherFiveDay.getWeather(message.getText(),model));
                     } catch (IOException e) {
