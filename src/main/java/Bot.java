@@ -62,43 +62,28 @@ public class Bot extends TelegramLongPollingBot {
         Model model = new Model();
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
+
             switch (message.getText()) {
 
                 case "/start":
                     sendMsg2(message, "Добро пожаловать! Выберите подходящий вариант:");
                     break;
 
+/*
                 case "Текущая погода":
                     sendMsg(message, "Введите или выберите город:");
                     break;
-
+*/
 
                 case "Погода на 5 дней":
-                        switch (message.getText()) {
+                    sendMsg(message, "Ввведите или выбирите город:");
+                     break;
 
-                            case "Погода на 5 дней":
-                                sendMsg(message, "Ввведите или выбирите город:");
-                                
-                                try {
-                                    sendMsg2(message, WeatherFiveDay.getWeather(message.getText(), model));
-                                } catch (Exception ex) {
-                                    sendMsg2(message, "Город не найден");
-                                }
-                                break;
-
-                            default:
-                                try {
-                                    sendMsg2(message, WeatherFiveDay.getWeather(message.getText(), model));
-                                } catch (Exception ex) {
-                                    sendMsg2(message, "Город не найден");
-                                }
-                        }
-                    break;
 
                 default:
 
                     try {
-                        sendMsg2(message, Weather.getWeather(message.getText(), model));
+                        sendMsg2(message, WeatherFiveDay.getWeather(message.getText(), model));
                     } catch (Exception ex) {
                         sendMsg2(message, "Город не найден");
                     }
@@ -141,7 +126,7 @@ public class Bot extends TelegramLongPollingBot {
         KeyboardRow keyboardFirstRow = new KeyboardRow();
         KeyboardRow keyboardTwoRow = new KeyboardRow();
 
-        keyboardFirstRow.add(new KeyboardButton("Текущая погода"));
+//        keyboardFirstRow.add(new KeyboardButton("Текущая погода"));
         keyboardTwoRow.add(new KeyboardButton("Погода на 5 дней"));
 
         keyboardRows.add(keyboardFirstRow);
