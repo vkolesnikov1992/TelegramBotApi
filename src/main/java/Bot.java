@@ -78,6 +78,12 @@ public class Bot extends TelegramLongPollingBot {
 
                             case "Погода на 5 дней":
                                 sendMsg(message, "Ввведите или выбирите город:");
+                                
+                                try {
+                                    sendMsg2(message, WeatherFiveDay.getWeather(message.getText(), model));
+                                } catch (Exception ex) {
+                                    sendMsg2(message, "Город не найден");
+                                }
                                 break;
 
                             default:
