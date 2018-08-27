@@ -78,7 +78,7 @@ public class Bot extends TelegramLongPollingBot {
 
                         switch (message.getText()) {
 
-                            case "Ввведите или выбирите город:":
+                            case "Погода на 5 дней":
                                 break;
 
                             default:
@@ -88,7 +88,7 @@ public class Bot extends TelegramLongPollingBot {
                                     sendMsg2(message, "Город не найден");
                                 }
                         }
-                        break;
+
 
                 default:
 
