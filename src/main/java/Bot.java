@@ -75,8 +75,12 @@ public class Bot extends TelegramLongPollingBot {
 
                 case "Погода на 5 дней":
                     sendMsg(message, "Ввведите или выбирите город:");
-                    if(!message.getText().equals("Ввведите или выбирите город:")) {
+
                         switch (message.getText()) {
+
+                            case "Ввведите или выбирите город:":
+                                break;
+
                             default:
                                 try {
                                     sendMsg2(message, WeatherFiveDay.getWeather(message.getText(), model));
@@ -85,7 +89,7 @@ public class Bot extends TelegramLongPollingBot {
                                 }
                         }
                         break;
-                    }
+
                 default:
 
                     try {
