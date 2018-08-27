@@ -41,7 +41,7 @@ public class WeatherFiveDay {
             }
             dateSplit = model.getDate().split("-| |:");
             finalResult = finalResult + dateSplit[3] + ":" + dateSplit[4] + " "  + dateSplit[2] + "." + dateSplit[1] +
-            "    " + Math.round((model.getTemp() - 32) * 5/9) + "   " + model.getMain() + "\n";
+            "    " + Math.round(((model.getTemp() - 32) * 5/9)) + "   " + model.getMain() + "\n";
         }
 
 
