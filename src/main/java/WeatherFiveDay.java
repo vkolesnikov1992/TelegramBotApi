@@ -11,9 +11,10 @@ import java.util.Scanner;
 public class WeatherFiveDay {
 
     public static String getWeather(String message, Model model) throws IOException {
-        URL url = new URL("https://samples.openweathermap.org/data/2.5/forecast?q=" + message + "&appid=8f1a33a55508e0ae4b6de00abd059628");
+        URL url = new URL("https://api.openweathermap.org/data/2.5/forecast?q=" + message + "&appid=8f1a33a55508e0ae4b6de00abd059628");
         String finalResult = "";
-        String head = "Дата     Температура     Погода     Ветер";
+        String head = "Дата                 t     Погода";
+        String[] dateSplit;
 
         Scanner in = new Scanner((InputStream) url.getContent());
         String result = "";
@@ -25,7 +26,7 @@ public class WeatherFiveDay {
 
 
         JSONArray getArray = object.getJSONArray("list");
-        for (int i = 0; i < getArray.length(); i++) {
+        for (int i = 0; i < getArray.length(); i += 6) {
             JSONObject mainObj = getArray.getJSONObject(i);
             JSONObject main = mainObj.getJSONObject("main");
             JSONObject wind = mainObj.getJSONObject("wind");
@@ -38,7 +39,9 @@ public class WeatherFiveDay {
                 model.setIcon((String) obj2.get("icon"));
                 model.setMain((String) obj2.get("main"));
             }
-            finalResult = finalResult + model.getDate() + "    " + Math.round((model.getTemp() - 32) * 5/9) + "   " + model.getMain()+ "   " + model.getSpeed() + "\n";
+            dateSplit = model.getDate().split("-| |:");
+            finalResult = finalResult + dateSplit[3] + ":" + dateSplit[4] + " "  + dateSplit[2] + "." + dateSplit[1] +
+            "    " + Math.round((model.getTemp() - 32) * 5/9) + "   " + model.getMain() + "\n";
         }
 
 
