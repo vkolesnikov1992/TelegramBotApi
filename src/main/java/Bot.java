@@ -88,7 +88,7 @@ public class Bot extends TelegramLongPollingBot {
                                     sendMsg2(message, "Город не найден");
                                 }
                         }
-
+                    break;
 
                 default:
 
