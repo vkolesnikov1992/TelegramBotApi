@@ -75,6 +75,7 @@ public class Bot extends TelegramLongPollingBot {
 
                 case "Погода на 5 дней":
                     sendMsg(message, "Ввведите или выбирите город:");
+                    if(!message.getText().equals("Ввведите или выбирите город:"))
                     switch (message.getText()){
                         default:
                             try {
