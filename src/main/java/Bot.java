@@ -59,8 +59,6 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     public void onUpdateReceived(Update update) {
-        boolean currentWeatherData = false;
-        boolean fiveDay = false;
         Model model = new Model();
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
@@ -72,34 +70,32 @@ public class Bot extends TelegramLongPollingBot {
 
                 case "Текущая погода":
                     sendMsg(message, "Введите или выберите город:");
-                    currentWeatherData = true;
-                    fiveDay = false;
                     break;
 
 
                 case "Погода на 5 дней":
                     sendMsg(message, "Ввведите или выбирите город:");
-                    fiveDay = true;
-                    currentWeatherData = false;
-                    break;
-
-
-                default:
-                        if(currentWeatherData == true) {
-                            try {
-                                sendMsg2(message, Weather.getWeather(message.getText(), model));
-                            } catch (Exception ex) {
-                                sendMsg2(message, "Город не найден");
-                            }
-                        }
-                        if(fiveDay == true){
+                    switch (message.getText()){
+                        default:
                             try {
                                 sendMsg2(message, WeatherFiveDay.getWeather(message.getText(), model));
                             } catch (Exception ex) {
                                 sendMsg2(message, "Город не найден");
                             }
-                        }
+                    }
+                    break;
+
+                default:
+
+                    try {
+                        sendMsg2(message, Weather.getWeather(message.getText(), model));
+                    } catch (Exception ex) {
+                        sendMsg2(message, "Город не найден");
+                    }
+
             }
+
+
         }
     }
 
