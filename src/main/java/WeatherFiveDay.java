@@ -26,7 +26,7 @@ public class WeatherFiveDay {
 
 
         JSONArray getArray = object.getJSONArray("list");
-        for (int i = 0; i < getArray.length(); i += 6) {
+        for (int i = 0; i < getArray.length(); i += 3) {
             JSONObject mainObj = getArray.getJSONObject(i);
             JSONObject main = mainObj.getJSONObject("main");
             JSONObject wind = mainObj.getJSONObject("wind");

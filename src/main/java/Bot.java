@@ -59,6 +59,8 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     public void onUpdateReceived(Update update) {
+        boolean currentWeatherData = false;
+        boolean fiveDay = false;
         Model model = new Model();
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
@@ -70,28 +72,33 @@ public class Bot extends TelegramLongPollingBot {
 
                 case "Текущая погода":
                     sendMsg(message, "Введите или выберите город:");
-                    break;
-
-                case "Москва":
-                    try {
-                        sendMsg(message, WeatherFiveDay.getWeather(message.getText(),model));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    currentWeatherData = true;
+                    fiveDay = false;
                     break;
 
 
                 case "Погода на 5 дней":
                     sendMsg(message, "Ввведите или выбирите город:");
+                    fiveDay = true;
+                    currentWeatherData = false;
                     break;
 
-                default:
-                    try {
-                        sendMsg2(message, Weather.getWeather(message.getText(), model));
-                    } catch (Exception ex) {
-                        sendMsg2(message, "Город не найден");
-                    }
 
+                default:
+                        if(currentWeatherData == true) {
+                            try {
+                                sendMsg2(message, Weather.getWeather(message.getText(), model));
+                            } catch (Exception ex) {
+                                sendMsg2(message, "Город не найден");
+                            }
+                        }
+                        if(fiveDay == true){
+                            try {
+                                sendMsg2(message, WeatherFiveDay.getWeather(message.getText(), model));
+                            } catch (Exception ex) {
+                                sendMsg2(message, "Город не найден");
+                            }
+                        }
             }
         }
     }
